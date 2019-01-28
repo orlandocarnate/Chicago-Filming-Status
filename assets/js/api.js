@@ -14,7 +14,7 @@ $(document).ready(function () {
         // FIELDS FROM BOTTOM PAGE: https://dev.socrata.com/foundry/data.cityofchicago.org/erhc-fkv9
         filmingURL += "&applicationstatus=Open";
         filmingURL += "&$where=applicationstartdate>='" + convertedTime + "'";
-        filmingURL += "&$limit=20";
+        filmingURL += "&$limit=50";
         // filmingURL += "&primarycontactlast=OPEN 4 BUSINESS PRODUCTIONS, LLC";
         // filmingURL += "&streetname='RACINE' OR streetname='BLUE ISLAND'";
         // filmingURL += "&streetname=RACINE";
@@ -39,14 +39,11 @@ $(document).ready(function () {
         var $table = $("#table-body");
         $table.append($("<tr class='row-fill'>").html("<h3>" + street + "</h3>"));
         for (i = 0; i < response.length; i++) {
-            var $startDate = $("<td>").text(response[i].applicationstartdate);
-            var $endDate = $("<td>").text(response[i].applicationenddate);
+            var start = moment(response[i].applicationstartdate, moment.ISO_8601).format("dddd, MMMM Do YYYY"); //2019-01-28T00:00:00
+            var $startDate = $("<td>").text(start);
+            var end = moment(response[i].applicationenddate, moment.ISO_8601).format("dddd, MMMM Do YYYY");
+            var $endDate = $("<td>").text(end);
             var $Location = $("<td>").text(response[i].streetname + ", From " + response[i].streetnumberfrom + " To " + response[i].streetnumberto);
-            // if (response[i].websiteURL !== null) {
-            //     var $URL = $("<td>").html("<a href=" + response[i].websiteURL + " target='_blank'>Charity Link</a>");
-            // } else {
-            //     var $URL = $("<td>").text("Not Available");
-            // }
             $table.append($("<tr>").append($startDate, $endDate, $Location));
             
             $("#results").append($table);
