@@ -14,11 +14,13 @@ $(document).ready(function () {
         // FIELDS FROM BOTTOM PAGE: https://dev.socrata.com/foundry/data.cityofchicago.org/erhc-fkv9
         filmingURL += "&applicationstatus=Open";
         filmingURL += "&$where=applicationstartdate>='" + convertedTime + "'";
-        filmingURL += "&$limit=50";
+        // filmingURL += "AND (streetname='LEAVITT' OR streetname='SCHOOL')"; // test value
+        filmingURL += "AND (streetname='RACINE' OR streetname='BLUE ISLAND' OR streetname='14TH')"; // WORKS! 
+        filmingURL += "&$limit=100";
         // filmingURL += "&primarycontactlast=OPEN 4 BUSINESS PRODUCTIONS, LLC";
-        // filmingURL += "&streetname='RACINE' OR streetname='BLUE ISLAND'";
+
         // filmingURL += "&streetname=RACINE";
-        filmingURL += "&streetname='" + street.toUpperCase() + "'";
+        // filmingURL += "&streetname='" + street.toUpperCase() + "'";
         filmingURL += "&$order=applicationstartdate ASC";
 
 
@@ -37,13 +39,13 @@ $(document).ready(function () {
 
     function tableGenerator(response, street) {
         var $table = $("#table-body");
-        $table.append($("<tr class='row-fill'>").html("<h3>" + street + "</h3>"));
+        // $table.append($("<tr class='row-fill'>").html("<h3>" + street + "</h3>"));
         for (i = 0; i < response.length; i++) {
             var start = moment(response[i].applicationstartdate, moment.ISO_8601).format("dddd, MMMM Do YYYY"); //2019-01-28T00:00:00
             var $startDate = $("<td>").text(start);
             var end = moment(response[i].applicationenddate, moment.ISO_8601).format("dddd, MMMM Do YYYY");
             var $endDate = $("<td>").text(end);
-            var $Location = $("<td>").text(response[i].streetname + ", From " + response[i].streetnumberfrom + " To " + response[i].streetnumberto);
+            var $Location = $("<td>").text(response[i].streetname + " " + response[i].suffix + ", From " + response[i].streetnumberfrom + " To " + response[i].streetnumberto);
             $table.append($("<tr>").append($startDate, $endDate, $Location));
             
             $("#results").append($table);
@@ -51,6 +53,9 @@ $(document).ready(function () {
         $table.append($("<tr class='row-fill'>"));
     };
 
-    filmDates("Racine");
-    filmDates("Blue Island");
+    filmDates("Racine and Blue Island");
+    // filmDates("(Racine) OR (BLUE ISLAND)");
+    // filmDates("Racine");
+    // filmDates("Blue Island");
 });
+
