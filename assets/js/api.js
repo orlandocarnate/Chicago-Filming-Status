@@ -13,7 +13,7 @@ $(document).ready(function () {
 
         // FIELDS FROM BOTTOM PAGE: https://dev.socrata.com/foundry/data.cityofchicago.org/erhc-fkv9
         filmingURL += "&applicationstatus=Open";
-        filmingURL += "&$where=applicationstartdate>='" + convertedTime + "'";
+        filmingURL += "&$where=applicationenddate>='" + convertedTime + "'";
         // filmingURL += "AND (streetname='LEAVITT' OR streetname='SCHOOL')"; // test value
         filmingURL += "AND (streetname='RACINE' OR streetname='BLUE ISLAND' OR streetname='14TH')"; // WORKS! 
         filmingURL += "&$limit=100";
