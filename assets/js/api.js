@@ -63,8 +63,8 @@ $(document).ready(function () {
             googleMapsURL += response[i].latitude + "," + response[i].longitude;
             console.log(googleMapsURL);
             var $Location = $("<td>").html("<a href='" + googleMapsURL + "' target='_blank'>" + response[i].streetname + " " + response[i].suffix + ", From " + response[i].streetnumberfrom + " To " + response[i].streetnumberto + "</a>");
-            var $comments = $("<td>").html(response[i].comments);
-            $table.append($("<tr>").append($index,$name, $startDate, $endDate, $Location, $comments));
+            var $comments = $("<td>").html(response[i].comments + "<br />" + response[i].detail);
+            $table.append($("<tr>").append($index, $name, $startDate, $endDate, $Location, $comments));
 
             $("#results").append($table);
         }
