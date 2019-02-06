@@ -1,4 +1,4 @@
-# A Simple Web App that checks filming dates at the Chicago Fire Engine 18
+# A Simple Web App that checks filming dates near the Chicago Fire Engine 18
 
 ## Overview
 I created this web app to see when the series Chicago Fire is filming near my home so I know if I can park near the fire house.
