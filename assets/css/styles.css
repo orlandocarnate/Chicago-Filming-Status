@@ -29,3 +29,10 @@ table.gridtable td {
 .row-fill {
     height: 2em;
 }
+
+#table-body tr:nth-child(odd) td {
+    background: #fff;
+}
+#table-body tr:nth-child(even) td {
+    background: #eeeeee;
+}

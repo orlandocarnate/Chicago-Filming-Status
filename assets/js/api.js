@@ -53,6 +53,7 @@ $(document).ready(function () {
         var $table = $("#table-body");
         // $table.append($("<tr class='row-fill'>").html("<h3>" + street + "</h3>"));
         for (i = 0; i < response.length; i++) {
+            var $index = $("<td>").html(i);
             var $name = $("<td>").html(response[i].applicationname);
             var start = moment(response[i].applicationstartdate, moment.ISO_8601).format("dddd, MMMM Do YYYY"); //2019-01-28T00:00:00
             var $startDate = $("<td>").html(start);
@@ -60,7 +61,7 @@ $(document).ready(function () {
             var $endDate = $("<td>").html(end);
             var $Location = $("<td>").html(response[i].streetname + " " + response[i].suffix + ", From " + response[i].streetnumberfrom + " To " + response[i].streetnumberto);
             var $comments = $("<td>").html(response[i].comments);
-            $table.append($("<tr>").append($name, $startDate, $endDate, $Location, $comments));
+            $table.append($("<tr>").append($index,$name, $startDate, $endDate, $Location, $comments));
 
             $("#results").append($table);
         }
