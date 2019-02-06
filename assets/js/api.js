@@ -51,7 +51,7 @@ $(document).ready(function () {
 
     function tableGenerator(response) {
         var $table = $("#table-body");
-        // $table.append($("<tr class='row-fill'>").html("<h3>" + street + "</h3>"));
+        // http://maps.google.com/maps?q=41.865031753,-87.66229427380698 EXAMPLE URL QUERY
         for (i = 0; i < response.length; i++) {
             var $index = $("<td>").html(i);
             var $name = $("<td>").html(response[i].applicationname);
@@ -59,7 +59,10 @@ $(document).ready(function () {
             var $startDate = $("<td>").html(start);
             var end = moment(response[i].applicationenddate, moment.ISO_8601).format("dddd, MMMM Do YYYY");
             var $endDate = $("<td>").html(end);
-            var $Location = $("<td>").html(response[i].streetname + " " + response[i].suffix + ", From " + response[i].streetnumberfrom + " To " + response[i].streetnumberto);
+            var googleMapsURL = "http://maps.google.com/maps?q=";
+            googleMapsURL += response[i].latitude + "," + response[i].longitude;
+            console.log(googleMapsURL);
+            var $Location = $("<td>").html("<a href='" + googleMapsURL + "' target='_blank'>" + response[i].streetname + " " + response[i].suffix + ", From " + response[i].streetnumberfrom + " To " + response[i].streetnumberto + "</a>");
             var $comments = $("<td>").html(response[i].comments);
             $table.append($("<tr>").append($index,$name, $startDate, $endDate, $Location, $comments));
 
