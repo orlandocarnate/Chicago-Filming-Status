@@ -29,7 +29,7 @@ $(document).ready(function () {
         // filmingURL += "&streetname='BLUE ISLAND'";
 
         // filmingURL += "&streetname='" + street.toUpperCase() + "'";
-        filmingURL += "&$order=applicationstartdate DESC";
+        filmingURL += "&$order=applicationstartdate ASC";
 
         // CHICAGO FIRE ENGINE 18 LAT, LONG: 41.864527, -87.655950
         // NW 41.865504, -87.658612
