@@ -53,16 +53,16 @@ $(document).ready(function () {
         var $table = $("#table-body");
         // http://maps.google.com/maps?q=41.865031753,-87.66229427380698 EXAMPLE URL QUERY
         for (i = 0; i < response.length; i++) {
-            var $index = $("<td>").html(i);
-            var $name = $("<td>").html(response[i].applicationname);
+            // var $index = $("<td>").html(i);
+            // var $name = $("<td>").html(response[i].applicationname);
             var start = moment(response[i].applicationstartdate, moment.ISO_8601).format("dddd, MMMM Do YYYY"); //2019-01-28T00:00:00
             var $startDate = $("<td>").html(start);
             var end = moment(response[i].applicationenddate, moment.ISO_8601).format("dddd, MMMM Do YYYY");
             var $endDate = $("<td>").html(end);
-            var googleMapsURL = "http://maps.google.com/maps?q=";
-            googleMapsURL += response[i].latitude + "," + response[i].longitude;
-            console.log(googleMapsURL);
-            var $Location = $("<td>").html("<a href='" + googleMapsURL + "' target='_blank'>" + response[i].streetname + " " + response[i].suffix + ", From " + response[i].streetnumberfrom + " To " + response[i].streetnumberto + "</a>");
+            // var googleMapsURL = "http://maps.google.com/maps?q=";
+            // googleMapsURL += response[i].latitude + "," + response[i].longitude;
+            // console.log(googleMapsURL);
+            // var $Location = $("<td>").html("<a href='" + googleMapsURL + "' target='_blank'>" + response[i].streetname + " " + response[i].suffix + ", From " + response[i].streetnumberfrom + " To " + response[i].streetnumberto + "</a>");
             var $comments = $("<td>").html(response[i].comments + "<br />" + response[i].detail);
 
             var map = "https://maps.googleapis.com/maps/api/";
