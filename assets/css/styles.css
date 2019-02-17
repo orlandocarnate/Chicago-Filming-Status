@@ -26,6 +26,7 @@ table.gridtable td {
     border-color: #666666;
     background-color: #ffffff;
 }
+
 .row-fill {
     height: 2em;
 }
@@ -33,6 +34,14 @@ table.gridtable td {
 #table-body tr:nth-child(odd) td {
     background: #fff;
 }
+
 #table-body tr:nth-child(even) td {
     background: #eeeeee;
+}
+
+/* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+
+.map {
+    height: 100%;
 }

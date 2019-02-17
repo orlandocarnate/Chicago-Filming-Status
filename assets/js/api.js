@@ -64,7 +64,18 @@ $(document).ready(function () {
             console.log(googleMapsURL);
             var $Location = $("<td>").html("<a href='" + googleMapsURL + "' target='_blank'>" + response[i].streetname + " " + response[i].suffix + ", From " + response[i].streetnumberfrom + " To " + response[i].streetnumberto + "</a>");
             var $comments = $("<td>").html(response[i].comments + "<br />" + response[i].detail);
-            $table.append($("<tr>").append($index, $name, $startDate, $endDate, $Location, $comments));
+
+            var map = "https://maps.googleapis.com/maps/api/";
+            map +="staticmap?center=" + + response[i].latitude;
+            map += "," + response[i].longitude + "&zoom=15"; //zoom street level 15
+            map +="&markers=size:mid|" + response[i].latitude + "," 
+            map += response[i].longitude
+            map += "&size=150x150&key=AIzaSyBY" + "cRqyR9wypGR5";
+            map +="T4e6A1_FHiIU11sYhLM";
+            var $map = $("<img>").attr({"src": map});
+
+            // $table.append($("<tr>").append($index, $name, $startDate, $endDate, $map, $comments));
+            $table.append($("<tr>").append($startDate, $endDate, $map, $comments));
 
             $("#results").append($table);
         }
